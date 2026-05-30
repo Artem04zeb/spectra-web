@@ -1,0 +1,83 @@
+---
+description: Visual style rules for Spectra CPQ landing pages and UI components
+alwaysApply: true
+---
+
+# Spectra CPQ Visual Style
+
+Use this visual style for all landing page sections and UI components.
+
+## Brand style
+
+The interface should look like a continuation of the Spectra CPQ presentation:
+clean, light, technological, friendly, and presentation-like.
+
+Avoid:
+- generic SaaS templates;
+- heavy corporate B2B visuals;
+- random stock photos;
+- dark, aggressive, overloaded interfaces.
+
+## Typography
+
+- Main font: SF Pro Display.
+- Use large, expressive headings.
+- Headings may use uppercase or semi-uppercase.
+- Keep typography clean, minimal, and readable.
+- Use tight but comfortable spacing in headings.
+
+## Colors
+
+Use the following core palette:
+
+- Accent purple: #A183FA
+- Background: #FFFFFF
+- Main text: #3F3F3F
+- Light card background: #F4F4F4 or #F7F7F7
+
+Rules:
+- Use #A183FA for primary CTA buttons, accent cards, badges, icons, and key visual elements.
+- Use white text on purple backgrounds.
+- Use #3F3F3F for primary text.
+- Keep backgrounds mostly white or very light gray.
+
+## Layout
+
+- Use a lot of whitespace.
+- Use large clean sections.
+- Prefer calm grid-based layouts.
+- Use soft cards with 16–24px border radius.
+- Cards should have either a light gray background or a purple accent background.
+- Use subtle shadows only when needed.
+- Alternate white sections with purple accent sections when it helps structure the page.
+
+## Components
+
+Buttons:
+- Primary buttons: purple background, white text, rounded corners.
+- Secondary buttons: light background or transparent style with dark text.
+- CTA text should be direct and action-oriented.
+
+Cards:
+- Rounded, soft, spacious.
+- No hard borders unless necessary.
+- Important cards can be purple with white text.
+- Secondary cards should be light gray with dark text.
+
+## Graphics
+
+- Use 3D illustrations from the Spectra CPQ presentation when available:
+  people, gears, documents, laptop, charts, interface elements.
+- Do not use stock photos.
+- If the correct illustration is not available, use a placeholder with a clear TODO comment.
+
+## Overall feeling
+
+The design should feel:
+- modern;
+- light;
+- technological;
+- structured;
+- trustworthy;
+- not too formal;
+- not too playful.
