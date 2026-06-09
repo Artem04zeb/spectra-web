@@ -25,12 +25,12 @@ export const NicheVisualPanel = ({ nicheId, nicheTitle }: NicheVisualPanelProps)
 
   return (
     <aside
-      className="h-full overflow-hidden rounded-[30px] border border-[#A183FA]/15 bg-[#F8F8FB] shadow-[0_32px_80px_rgba(161,131,250,0.14)]"
+      className="hidden w-full min-w-0 overflow-hidden rounded-[30px] border border-[#A183FA]/15 bg-[#F8F8FB] shadow-[0_32px_80px_rgba(161,131,250,0.14)] lg:block lg:h-full"
       aria-label={`Визуал для ниши ${nicheTitle}`}
     >
-      <div className="h-full overflow-hidden rounded-[30px] border border-[#A183FA]/20 bg-white shadow-[0_18px_40px_rgba(161,131,250,0.12)] p-4">
+      <div className="h-full min-h-0 overflow-hidden rounded-[30px] border border-[#A183FA]/20 bg-white p-4 shadow-[0_18px_40px_rgba(161,131,250,0.12)]">
         {image ? (
-          <div className="relative h-full overflow-hidden rounded-[24px] border border-[#A183FA]/10 bg-[#F8F8FB] aspect-[4/3] sm:aspect-[3/4]">
+          <div className="relative h-full min-h-[420px] max-h-[560px] overflow-hidden rounded-[24px] border border-[#A183FA]/10 bg-[#F8F8FB]">
             <Image
               src={image.src}
               alt={image.alt}

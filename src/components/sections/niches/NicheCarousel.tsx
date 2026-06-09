@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { NicheCard } from "@/components/sections/niches/NicheCard";
 import { NicheVisualPanel } from "@/components/sections/niches/NicheVisualPanel";
@@ -71,7 +71,7 @@ export const NicheCarousel = ({ niche }: NicheCarouselProps) => {
     });
   };
 
-  const handleScrollEvent = () => {
+  const handleScrollEvent = useCallback(() => {
     const container = scrollContainerRef.current;
     if (!container) {
       return;
@@ -82,8 +82,8 @@ export const NicheCarousel = ({ niche }: NicheCarouselProps) => {
     const cardWidth = card?.offsetWidth ?? container.clientWidth;
     const index = Math.round(container.scrollLeft / (cardWidth + gap));
 
-    setActiveCardIndex(clampIndex(index));
-  };
+    setActiveCardIndex(Math.max(0, Math.min(index, niche.cards.length - 1)));
+  }, [niche.cards.length]);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -93,14 +93,14 @@ export const NicheCarousel = ({ niche }: NicheCarouselProps) => {
 
     container.addEventListener("scroll", handleScrollEvent, { passive: true });
     return () => container.removeEventListener("scroll", handleScrollEvent);
-  }, [niche.cards.length]);
+  }, [handleScrollEvent]);
 
   return (
     <section
       aria-labelledby={`niche-${niche.id}-heading`}
-      className="rounded-[32px] border border-[#A183FA]/12 bg-[#F7F7F7] p-6 shadow-[0_16px_40px_rgba(63,63,63,0.04)] sm:p-8 lg:p-10"
+      className="rounded-[24px] border border-[#A183FA]/12 bg-[#F7F7F7] p-4 shadow-[0_16px_40px_rgba(63,63,63,0.04)] sm:rounded-[32px] sm:p-8 lg:p-10"
     >
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,55%)_minmax(0,45%)] lg:items-tar">
+      <div className="grid gap-6 sm:gap-8 lg:grid-cols-[minmax(0,55%)_minmax(0,45%)] lg:items-stretch">
         <div className="space-y-6 lg:contents"> 
           <div className="max-w-2xl lg:col-span-2 lg:max-w-none">
             <h3
@@ -114,8 +114,8 @@ export const NicheCarousel = ({ niche }: NicheCarouselProps) => {
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-[28px] border border-[#A183FA]/10 bg-white p-5 shadow-[0_18px_40px_rgba(63,63,63,0.06)] sm:p-6 lg:col-start-1">
-            <div className="pb-4">
+          <div className="relative min-w-0 overflow-hidden rounded-[22px] border border-[#A183FA]/10 bg-white p-4 shadow-[0_18px_40px_rgba(63,63,63,0.06)] sm:rounded-[28px] sm:p-6 lg:col-start-1">
+            <div className="flex flex-col gap-4 pb-4 sm:block">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#6C4CE5]">
                   Боли и сценарии
@@ -125,7 +125,7 @@ export const NicheCarousel = ({ niche }: NicheCarouselProps) => {
                 </p>
               </div>
 
-              <div className="absolute right-4 top-4 z-10 flex items-center gap-3">
+              <div className="flex items-center gap-3 sm:absolute sm:right-4 sm:top-4 sm:z-10">
                 <button
                   type="button"
                   onClick={() => handleScroll("left")}
@@ -145,15 +145,19 @@ export const NicheCarousel = ({ niche }: NicheCarouselProps) => {
               </div>
             </div>
 
+            <div className="sm:hidden">
+              <NicheCard card={niche.cards[activeCardIndex]} />
+            </div>
+
             <div
               ref={scrollContainerRef}
-              className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:auto] [scrollbar-color:#A183FA66_transparent] [&::-webkit-scrollbar]:h-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#A183FA]/45 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#A183FA]/10"
+              className="hidden min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto pb-3 sm:flex [scrollbar-width:auto] [scrollbar-color:#A183FA66_transparent] [&::-webkit-scrollbar]:h-3 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-[#A183FA]/45 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-[#A183FA]/10"
             >
               {niche.cards.map((card) => (
                 <div
                   key={card.id}
                   data-niche-card
-                  className="w-[min(85vw,560px)] shrink-0 snap-start sm:w-[min(90vw,560px)] lg:w-[min(100%,560px)]"
+                  className="min-w-0 shrink-0 basis-[min(82vw,560px)] snap-start lg:basis-[min(100%,560px)]"
                 >
                   <NicheCard card={card} />
                 </div>

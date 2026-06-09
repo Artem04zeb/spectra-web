@@ -6,7 +6,7 @@ type NicheCardProps = {
 
 export const NicheCard = ({ card }: NicheCardProps) => {
   return (
-    <article className="flex h-full min-h-[420px] flex-col rounded-[24px] border border-transparent bg-white p-6 text-[#3F3F3F] shadow-[0_16px_40px_rgba(63,63,63,0.08)]">
+    <article className="flex h-full min-h-0 flex-col rounded-[20px] border border-transparent bg-white p-4 text-[#3F3F3F] shadow-[0_16px_40px_rgba(63,63,63,0.08)] sm:min-h-[420px] sm:rounded-[24px] sm:p-6">
       <span className="inline-flex w-fit rounded-full border border-[#A183FA]/20 bg-[#A183FA]/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#6C4CE5]">
         {card.badge}
       </span>
@@ -19,7 +19,7 @@ export const NicheCard = ({ card }: NicheCardProps) => {
         {card.description}
       </p>
 
-      <div className="mt-6 rounded-3xl border border-[#A183FA]/18 bg-[#F7F7F7] p-5">
+      <div className="mt-5 rounded-[20px] border border-[#A183FA]/18 bg-[#F7F7F7] p-4 sm:mt-6 sm:rounded-3xl sm:p-5">
         <p className="text-sm font-semibold text-[#6C4CE5]">Что автоматизируем</p>
         <ul className="mt-3 space-y-2">
           {card.automations.map((automation) => (
